@@ -20,6 +20,38 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Poet-Tree">
     <meta name="theme-color" content="#C49A6C">
+
+    <!-- Dynamic PWA Manifest for Android/Samsung Native Home Screen Support -->
+    <script>
+        const manifestData = {
+            "name": "Poet-Tree Society Vol.1",
+            "short_name": "Poet-Tree",
+            "start_url": window.location.pathname || ".",
+            "display": "standalone",
+            "background_color": "#C49A6C",
+            "theme_color": "#C49A6C",
+            "icons": [
+                {
+                    "src": "https://www.dropbox.com/scl/fi/mwx1h2s39dybxr3oabom5/poetry-logo.png?rlkey=xdg3oezeeqjj1sw8v7aw56nw6&st=o93ap6hj&raw=1",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                    "purpose": "any maskable"
+                },
+                {
+                    "src": "https://www.dropbox.com/scl/fi/mwx1h2s39dybxr3oabom5/poetry-logo.png?rlkey=xdg3oezeeqjj1sw8v7aw56nw6&st=o93ap6hj&raw=1",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "any maskable"
+                }
+            ]
+        };
+        const manifestBlob = new Blob([JSON.stringify(manifestData)], {type: 'application/manifest+json'});
+        const manifestUrl = URL.createObjectURL(manifestBlob);
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = manifestUrl;
+        document.head.appendChild(manifestLink);
+    </script>
     
     <!-- Social Media Previews (Open Graph / Twitter) -->
     <meta property="og:title" content="Poet-Tree Society Vol.1 | Composition Notebook">
